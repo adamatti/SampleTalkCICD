@@ -1,0 +1,18 @@
+version: "2"
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    environment:
+      PORT: 8080
+  test:
+    build: .
+    entrypoint: "gradle test --no-daemon --stacktrace"
+    links:
+      - app
+    environment:
+      TEST_HOST: "app"
+      TEST_PORT: "8080"

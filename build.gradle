@@ -1,5 +1,9 @@
 apply plugin: "idea"
 apply plugin: "groovy"
+apply plugin: "application"
+
+applicationName = "sample"
+mainClassName = "adamatti.Main"
 
 repositories {
     mavenCentral()
@@ -16,8 +20,10 @@ dependencies {
 
 	compile group: 'org.springframework.data', name: 'spring-data-mongodb', version: '1.10.1.RELEASE'
 
+	testCompile group: 'org.springframework', name: 'spring-test', version: '4.3.10.RELEASE'
 	testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.1-groovy-2.4'
 	testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.5'
+	testCompile 'junit:junit:4.12' //Required to run spock on cmd line
 }
 
 idea {

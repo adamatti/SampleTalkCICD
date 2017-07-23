@@ -1,0 +1,9 @@
+.gradle/
+build/
+out/
+.editorconfig
+.gitignore
+Makefile
+*.iml
+*.ipr
+*.iws
