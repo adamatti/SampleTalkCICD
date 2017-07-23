@@ -5,5 +5,6 @@ beans {
 
 	context."component-scan"("base-package" : "adamatti")
 
-	//importBeans('classpath:spring/camel.groovy')
+	importBeans('classpath:spring/mongo.groovy')
+	importBeans('classpath:spring/camel.groovy')
 }

@@ -1,3 +1,11 @@
+mongo = [
+	url : System.env.MONGO_URL ?: "mongodb://localhost:27017/sample"
+]
+
+mq = [
+	url : System.env.MQ_URL ?: "amqp://admin:admin@localhost/admin",
+]
+
 web = [
 	port: (System.env.PORT ?: "8080").toInteger()
 ]

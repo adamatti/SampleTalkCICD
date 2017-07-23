@@ -16,9 +16,23 @@ class SparkHelper {
 	}
 
 	static void jsonGet(String path, Closure code){
-		Spark.get(path){Request req, Response res ->
+		jsonMethod(Spark.&get,path,code)
+	}
+
+	static void jsonPost(String path, Closure code){
+		jsonMethod(Spark.&post,path,code)
+	}
+
+	static void jsonMethod(Closure method, String path, Closure code){
+		method(path){Request req, Response res ->
 			res.header("Content-Type","application/json")
-			toJsonString code.call(req, res)
+
+			try {
+				toJsonString code.call(req, res)
+			} catch (Exception e){
+				res.status(500)
+				toJsonString([error: e.message])
+			}
 		}
 	}
 }

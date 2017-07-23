@@ -1,13 +1,44 @@
 version: "2"
 services:
+  mq:
+    image: "rabbitmq:3.6.10-management-alpine"
+    expose:
+      - 15671
+      - 15672
+      - 4369
+      - 5671
+      - 5672
+      - 25672
+    ports:
+      - "15671:15671"
+      - "15672:15672"
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "25672:25672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "admin"
+      RABBITMQ_DEFAULT_VHOST: "admin"
+  db:
+    image: "mongo:3.5.7"
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
   app:
     build: .
     ports:
       - "8080:8080"
     expose:
       - 8080
+    links:
+      - db
+      - mq
     environment:
       PORT: 8080
+      MONGO_URL: "mongodb://db:27017/sample"
+      MQ_URL: "amqp://admin:admin@mq/admin"
   test:
     build: .
     entrypoint: "gradle test --no-daemon --stacktrace"
