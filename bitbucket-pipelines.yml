@@ -5,7 +5,7 @@ pipelines:
   default:
     - step:
         script:
-          - gradle run > /dev/null &
+          - gradle run &
           - gradle test --stacktrace
         services:
           - db
