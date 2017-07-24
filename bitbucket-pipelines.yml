@@ -6,6 +6,7 @@ pipelines:
     - step:
         script:
           - gradle run &
+          - sleep 15
           - gradle test --stacktrace
         services:
           - db
