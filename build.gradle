@@ -30,6 +30,10 @@ dependencies {
 	testCompile 'junit:junit:4.12' //Required to run spock on cmd line
 }
 
+test {
+	dependsOn 'cleanTest'
+}
+
 idea {
     module {
         downloadJavadoc = false
