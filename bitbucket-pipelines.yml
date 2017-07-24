@@ -5,9 +5,10 @@ pipelines:
   default:
     - step:
         script:
-          - gradle run &
+          - gradle idea --no-daemon #download dependencies
+          - gradle run --no-daemon --stacktrace &
           - sleep 15
-          - gradle test --stacktrace
+          - gradle test --stacktrace --no-daemon
         services:
           - db
           - mq
