@@ -6,3 +6,20 @@ pipelines:
     - step:
         script:
           - gradle classes
+        services:
+          - db
+          - mq
+        environment:
+          PORT: 8080
+          MONGO_URL: "mongodb://db:27017/sample"
+          MQ_URL: "amqp://admin:admin@mq/admin"
+definitions:
+  services:
+    mq:
+      image: "rabbitmq:3.6.10-management-alpine"
+      environment:
+        RABBITMQ_DEFAULT_USER: "admin"
+        RABBITMQ_DEFAULT_PASS: "admin"
+        RABBITMQ_DEFAULT_VHOST: "admin"
+    db:
+      image: "mongo:3.5.7"
