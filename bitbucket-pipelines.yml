@@ -1,0 +1,8 @@
+image: gradle:4.0.1-jdk8-alpine
+clone:
+  depth: full
+pipelines:
+  default:
+    - step:
+        script:
+          - gradle classes
