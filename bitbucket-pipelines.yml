@@ -5,14 +5,15 @@ pipelines:
   default:
     - step:
         script:
-          - gradle classes
+          - gradle run > /dev/null &
+          - gradle test --stacktrace
         services:
           - db
           - mq
         environment:
           PORT: 8080
-          MONGO_URL: "mongodb://db:27017/sample"
-          MQ_URL: "amqp://admin:admin@mq/admin"
+          MONGO_URL: "mongodb://127.0.0.1:27017/sample"
+          MQ_URL: "amqp://admin:admin@127.0.0.1/admin"
 definitions:
   services:
     mq:
