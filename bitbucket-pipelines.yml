@@ -5,7 +5,7 @@ pipelines:
   default:
     - step:
         script:
-          - gradle idea --no-daemon #download dependencies
+          - gradle idea classes compileTestGroovy --no-daemon #download dependencies, compile
           - gradle run --no-daemon --stacktrace &
           - sleep 15
           - gradle test --stacktrace --no-daemon
