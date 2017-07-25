@@ -16,6 +16,7 @@ pipelines:
           PORT: 8080
           MONGO_URL: "mongodb://127.0.0.1:27017/sample"
           MQ_URL: "amqp://admin:admin@127.0.0.1/admin"
+          MAX_HEAP_SIZE: "128M"
 definitions:
   services:
     mq:
