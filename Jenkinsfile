@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-node('BUILD') {
+node {
     checkout scm
 
     stage('Build Docker image') {
