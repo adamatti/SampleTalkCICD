@@ -16,6 +16,6 @@ ADD build.gradle /app
 RUN gradle build idea --stacktrace --no-daemon
 
 ADD . /app
-RUN gradle install -x test --no-daemon
+RUN gradle install testClasses -x test --no-daemon
 
 CMD /app/build/install/sample/bin/sample
