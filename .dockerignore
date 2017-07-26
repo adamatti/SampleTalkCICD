@@ -1,9 +1,17 @@
 .gradle/
 build/
+fakeServices/
 out/
+ui/
 .editorconfig
 .gitignore
+.travis.yml
+bitbucket-pipelines.yml
+docker-compose.yml
+docker-compose-extra.yml
+Jenkinsfile
 Makefile
+*.adoc
 *.iml
 *.ipr
 *.iws
