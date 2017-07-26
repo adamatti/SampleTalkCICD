@@ -14,6 +14,9 @@ class OrderService extends SpringRouteBuilder implements Processor{
 	@Autowired
 	private OrderRepo orderRepo
 
+	@Autowired
+	private SendEmailService sendEmailService
+
 	void configure() throws Exception {
 		errorHandler(noErrorHandler())
 
@@ -23,10 +26,12 @@ class OrderService extends SpringRouteBuilder implements Processor{
 	}
 
 	void process(Exchange exchange) throws Exception {
-		Map body = exchange.in.body
+		Map order = exchange.in.body
 
-		log.info "Order received: ${body}"
+		log.info "Order received: ${order}"
 
-		orderRepo.save(body)
+		orderRepo.save(order)
+
+		sendEmailService.sendEmail(order: order)
 	}
 }
