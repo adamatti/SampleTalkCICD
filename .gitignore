@@ -164,3 +164,6 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # End of https://www.gitignore.io/api/osx,java,linux,gradle,windows,intellij+iml
+
+fakeServices/
+ui/
