@@ -14,6 +14,7 @@ run-docker-app:docker-build
 
 run-docker-test:docker-build
 	docker-compose run test
+	docker-compose stop -t 0
 
 jenkins:
 	#docker-compose -f docker-compose-extra.yml stop -t 0
