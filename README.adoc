@@ -1,1 +1,1 @@
-wip
+Code used in the [CI/CD](https://slides.com/adamatti/decks/ci-e-cd) talks
